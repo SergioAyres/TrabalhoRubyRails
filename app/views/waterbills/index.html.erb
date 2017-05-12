@@ -10,6 +10,7 @@
       <th>Year</th>
       <th>Consumption</th>
       <th>Custo Mensal</th>
+      <th>label</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -25,6 +26,9 @@
         <td><% if waterbill.consumption <= 30 && waterbill.consumption>= 11 %><%= waterbill.consumption%><% end %></td>
         <td><% if waterbill.consumption <= 100 && waterbill.consumption>= 31 %><%= waterbill.consumption*2%><% end %></td>
         <td><% if waterbill.consumption >=101 %><%= waterbill.consumption*5%><% end %></td>
+        <td><% if waterbill.consumption < 10 %>normal<% end %></td>
+        <td><% if waterbill.consumption <= 30 && waterbill.consumption>= 10 %>overuse<% end %></td>
+        <td><% if waterbill.consumption> 30 %>excessive<% end %></td>
         <td><%= link_to 'Show', waterbill %></td>
         <td><%= link_to 'Edit', edit_waterbill_path(waterbill) %></td>
         <td><%= link_to 'Destroy', waterbill, method: :delete, data: { confirm: 'Are you sure?' } %></td>
